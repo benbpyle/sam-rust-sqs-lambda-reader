@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "messageId": "19dd0b57-b21e-4ac1-bd88-01bbb068cb78",
+            "receiptHandle": "MessageReceiptHandle",
+            "body": "{ \"awsRegion\": \"us-west-2\", \"dynamodb\": { \"ApproximateCreationDateTime\": 1698684566, \"Keys\": { \"id\": { \"S\": \"12345\" } }, \"NewImage\": { \"id\": { \"S\": \"12345\" }, \"name\": { \"S\": \"Sample event name\" }, \"description\": { \"S\": \"Sample description is here\" }, \"customNote\": { \"S\": \"Custom note to test the deserialization\" } }, \"OldImage\": { \"id\": { \"S\": \"12345\" }, \"name\": { \"S\": \"Old event name\" }, \"description\": { \"S\": \"Old description is here\" }, \"customNote\": { \"S\": \"Old custom note to test the deserialization\" } }, \"SequenceNumber\": \"1085327500000000022289801774\", \"SizeBytes\": 1245, \"StreamViewType\": \"NEW_AND_OLD_IMAGES\" }, \"eventID\": \"86bde389b5c7566b6d22295e02514c74\", \"eventName\": \"MODIFY\", \"eventSource\": \"aws:dynamodb\", \"eventVersion\": \"1.1\", \"eventSourceARN\": \"arn:aws:dynamodb:us-west-2:904442064295:table/MonthEndClose/stream/2023-10-30T16:25:48.204\" }",
+            "attributes": {
+                "ApproximateReceiveCount": "1",
+                "SentTimestamp": "1523232000000",
+                "SenderId": "123456789012",
+                "ApproximateFirstReceiveTimestamp": "1523232000001"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "7b270e59b47ff90a553787216d55d91d",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:us-east-1:123456789012:MyQueue",
+            "awsRegion": "us-east-1"
+        }
+    ]
+}
+
+

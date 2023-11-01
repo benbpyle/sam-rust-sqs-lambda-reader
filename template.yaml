@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Rust SQS Lambda Reader
+
+  SAM Template for launching 
+    - Source SQS Queue
+    - Lambda Function written in Rust
+    - Event for polling SQS and triggering the Lambda
+
+Globals:
+  Function:
+    Timeout: 3
+    MemorySize: 128
+
+
+Resources:
+  SampleFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: rust-cargolambda
+    Properties:
+      FunctionName:
+        sample-rust-function
+      CodeUri: ./   # Points to dir of Cargo.toml
+      Handler: bootstrap    # Do not change, as this is the default executable name produced by Cargo Lambda
+      Runtime: provided.al2
+      Architectures:
+        - arm64
+      Events:
+        StreamEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt SourceQueue.Arn
+            BatchSize: 10
+  # Define the SQS queue
+  SourceQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName:
+        rust-source-queue
+      RedrivePolicy: { "deadLetterTargetArn":  !GetAtt SourceDeadLetterQueue.Arn, "maxReceiveCount": 5 }
+
+  # Define the SQS dead letter queue
+  SourceDeadLetterQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName:
+        rust-source-dead-letter-queue
+
