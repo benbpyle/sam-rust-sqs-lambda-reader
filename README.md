@@ -19,13 +19,12 @@ that is built in Rust and deployed with SAM
 
 ### Deploy the sample application
 
-To deploy the application, you need the folllowing tools:
+To deploy the application, you need the following tools:
 
 ```bash
  sam build
  sam deploy
 ```
-
 
 ### Cleanup
 
@@ -34,3 +33,7 @@ To delete the sample application that you created, use the AWS CLI. Assuming you
 ```bash
 sam delete
 ```
+
+### Read More
+
+This repos is in support of the article [posted here](https://www.binaryheap.com/consuming-an-sqs-event-with-lambda-and-rust/)
